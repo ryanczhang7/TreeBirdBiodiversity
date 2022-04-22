@@ -15,13 +15,14 @@ def base_geoviz(gdf, boundary_gdf, column, plot_size_x):
 
     fig, ax = plt.subplots(figsize=(plot_size_x, plot_size_y))
     boundary_gdf.plot(ax=ax, color='snow')
-    gdf.plot(ax=ax, column=gdf[column], legend=True)
+    plot_ax = gdf.plot(ax=ax, column=gdf[column], legend=True)
     ax.set_title('Shannon-Wiener Index of Bird Diversity Per Grid Cell',
                  fontdict={'fontsize': plot_size_x * 1.5, 'fontweight': 'medium'})
     ax.set_xlabel('Longitude [deg]', fontdict={'fontsize': plot_size_x, 'fontweight': 'medium'})
     ax.set_ylabel('Latitude [deg]', fontdict={'fontsize': plot_size_x, 'fontweight': 'medium'})
     plt.xticks(fontsize=plot_size_x * .75)
     plt.yticks(fontsize=plot_size_x * .75)
+    plot_ax.figure.axes[1].tick_params(labelsize=plot_size_x)
     fig.show()
 
 
